@@ -1,1 +1,1 @@
-"# puppeteer-games-scraper" 
+# puppeteer-games-scraper
