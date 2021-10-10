@@ -64,7 +64,13 @@ async function lazyScrollSolver(page) {
 
 app.get("/fetch::num", async (req, res) =>  {
   console.log("Starting Fetch");
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+    ],
+  }); //Consider changing this if it fails on local
+  
   const page = await browser.newPage();
   let outer = [];
   for (let index = 1; index <= req.params.num; index++) {
