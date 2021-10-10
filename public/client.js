@@ -18,7 +18,8 @@ function RefreshHandler() {
                         const link = document.createElement('a');
                         const div = document.createElement('div');
                         const pic = document.createElement('img');
-                        link.setAttribute('href', E.link);
+                        link.setAttribute('href', E.link);	
+                        link.setAttribute('target', "_blank");
                         pic.setAttribute('src', E.pic);
                         div.setAttribute('class', "card");
                         div.appendChild(link);

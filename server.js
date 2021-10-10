@@ -43,7 +43,7 @@ async function lazyScrollSolver(page) {
         window.scrollBy(0, _viewportHeight);
       }, viewportHeight).catch((err)=>{
         console.log(err);
-      });;
+      });
       await wait(20);
       viewportIncr = viewportIncr + viewportHeight;
     }
@@ -53,7 +53,7 @@ async function lazyScrollSolver(page) {
       window.scrollTo(0, 0);
     }).catch((err)=>{
       console.log(err);
-    });;
+    });
 
     // Some extra delay to let images load
     // await wait(100);
@@ -71,6 +71,7 @@ app.get("/fetch::num", async (req, res) =>  {
     ],
   }); //Consider changing this if it fails on local
   
+  try{
   const page = await browser.newPage();
   let outer = [];
   for (let index = 1; index <= req.params.num; index++) {
@@ -79,9 +80,7 @@ app.get("/fetch::num", async (req, res) =>  {
     }).catch((err)=>{
       res.sendStatus(404, err.message);
     });
-
     await lazyScrollSolver(page);
-
     const evl = await page.evaluate(() => {
       let inner = [];
       document.querySelectorAll(".post-excerpt").forEach((element) => {
@@ -95,16 +94,23 @@ app.get("/fetch::num", async (req, res) =>  {
     }).catch((err)=>{
       console.log(err);
     });
-
-    console.log("Page" + index + " Fetched");
+    await console.log("Page" + index + " Fetched");
     outer.push(evl.inner);
   }
-  await browser.close().then(() => {console.log("Fetch Completed")}).catch((err)=>{
-    console.log(err);
-  });;
   res.send(outer)
+} catch (e) {console.log(e);
+} finally {
+  await browser.close().then(() => {
+    console.log("Fetch Completed")
+  }
+  ).catch((err)=>{
+    console.log(err);
+  });
+}
 });
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+//https://stackoverflow.com/questions/52225461/puppeteer-unable-to-run-on-heroku
