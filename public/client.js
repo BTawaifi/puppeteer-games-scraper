@@ -7,7 +7,8 @@ console.log(outer)
 
 //placeholder
 function RefreshHandler() {
-    var itemsArray = JSON.parse(outer);
+    console.log(outer.outer)
+    var itemsArray = outer.outer;
     itemsArray.forEach(function (E) {
         const link = document.createElement('a');
         const pic = document.createElement('img');
@@ -20,7 +21,7 @@ function RefreshHandler() {
          ;
          //${E.children[1].children[0].innerText}:${releaseHolder.replace("Released: ", "")}
 
-        document.getElementsByClassName('Container').appendChild(link);
-        document.getElementsByClassName('Container').appendChild(pic);
+        document.querySelector('.Container').appendChild(link);
+        document.querySelector('.Container').appendChild(pic);
     });
 }
