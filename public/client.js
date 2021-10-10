@@ -10,7 +10,7 @@ function RefreshHandler() {
     if (inputRefresh.value==""||inputRefresh.value==undefined) {
         inputRefresh.value=1
     }
-    fetch(`http://localhost:5000/fetch:${inputRefresh.value}`,{method:'GET'})
+    fetch(`/fetch:${inputRefresh.value}`,{method:'GET'})
         .then(response => response.json())
         .then(data => {
                 data.forEach((mainArr) => {
