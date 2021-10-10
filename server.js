@@ -5,6 +5,8 @@ const cors = require("cors");
 const compression = require('compression')
 const app = express();
 
+const PORT = process.env.PORT || 5000;
+
 app.use(express.static("public"));
 app.use(cors({origin: "*"}));
 app.use(compression())
@@ -95,4 +97,4 @@ app.get("/fetch::num", async (req, res) =>  {
   res.send(outer)
 });
 
-app.listen(5000, () => console.log("Listening on port 5000"));
+app.listen(PORT, () => console.log("Listening on port "+PORT));
