@@ -3,5 +3,29 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "puppeteer": "^10.4.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "puppeteer-games-scraper",
+  "description": "An Application That Allows Web Scraping Games Using A Headless Browser",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BTawaifi/puppeteer-games-scraper.git"
+  },
+  "keywords": [
+    "puppeteer",
+    "games",
+    "scraper",
+    "games",
+    "scraper"
+  ],
+  "author": "Boutros Tawaifi",
+  "bugs": {
+    "url": "https://github.com/BTawaifi/puppeteer-games-scraper/issues"
+  },
+  "homepage": "https://github.com/BTawaifi/puppeteer-games-scraper#readme"
 }
