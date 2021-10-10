@@ -13,7 +13,7 @@ function RefreshHandler() {
         const link = document.createElement('a');
         const pic = document.createElement('img');
         link.setAttribute('href', E.link);
-        link.setAttribute('src', E.pic);
+        pic.setAttribute('src', E.pic);
         // Build the template
         link.innerHTML = `
               ${E.link}
