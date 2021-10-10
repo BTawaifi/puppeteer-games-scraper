@@ -50,6 +50,8 @@ function wait (ms) {
 }
 
 async function lazyScrollSolver(page) {
+  try {
+
   // Get the height of the rendered page
   const bodyHandle = await page.$('body');
   const { height } = await bodyHandle.boundingBox();
@@ -73,6 +75,11 @@ async function lazyScrollSolver(page) {
 
   // Some extra delay to let images load
   await wait(100);
+
+      
+} catch (error) {
+    console.log(error);
+}
 }
 
 (async () => {
@@ -89,10 +96,10 @@ async function lazyScrollSolver(page) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await lazyScrollSolver(page)
   
   for (let index = 1; index <= 1; index++) {
-      await page.goto(`https://www.skidrowreloaded.com/page/${index}`,{waitUntil: 'load'});
+    await page.goto(`https://www.skidrowreloaded.com/page/${index}`,{waitUntil: 'load'});
+    await lazyScrollSolver(page)
  
       const evl=await page.evaluate(()=>{
         let outer=[];
