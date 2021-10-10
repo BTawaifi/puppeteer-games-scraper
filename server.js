@@ -1,15 +1,15 @@
 const puppeteer = require("puppeteer");
 const path = require("path");
-const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const compression = require('compression')
-const app = express();
+//const fs = require("fs");
 
 const PORT = process.env.PORT || 5000;
 
+const app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors({origin: "*"}));
+app.use(cors({origin: '*'})); //Not needed
 app.use(compression())
 
 function wait(ms) {
@@ -18,6 +18,7 @@ function wait(ms) {
   );
 }
 
+/* 
 async function writeFile(file, buffer) {
   await fs.writeFile(file, JSON.stringify(buffer, null, 2), (err) => {
     console.log("Operation Completed");
@@ -25,7 +26,7 @@ async function writeFile(file, buffer) {
       console.log(err);
     }
   });
-}
+} */
 
 async function lazyScrollSolver(page) {
   try {
@@ -98,4 +99,6 @@ app.get("/fetch::num", async (req, res) =>  {
   res.send(outer)
 });
 
-app.listen(PORT, () => console.log("Listening on port 5000"));
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
