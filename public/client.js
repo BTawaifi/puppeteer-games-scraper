@@ -1,8 +1,8 @@
-const btnRefresh = document.getElementById('btnRefresh');
+const btnRefresh = document.querySelector('.btn-refresh');
 btnRefresh.addEventListener('click', RefreshHandlerT);
 
 function RefreshHandlerT() {
-
+console.log(outer)
 }
 
 //placeholder
