@@ -2,9 +2,12 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
+const compression = require('compression')
 const app = express();
+
 app.use(express.static("public"));
 app.use(cors({origin: "*"}));
+app.use(compression())
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(), ms)).catch(
