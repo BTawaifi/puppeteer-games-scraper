@@ -11,35 +11,35 @@ const mock={
       "link": "https://www.skidrowreloaded.com/gas-station-simulator-v1-01-38259-goldberg/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Shelter-Manager-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/shelter-manager-early-access/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Pathfinder-Wrath-of-the-Righteous-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/pathfinder-wrath-of-the-righteous-v1-0-8e-gog/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Stonedeep-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/stonedeep-plaza/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Seduction-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/seduction-darksiders/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Castle-in-The-Clouds-DX-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/castle-in-the-clouds-dx-darksiders/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2020/03/Mount-and-Blade-II-Bannerlord-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/mount-and-blade-ii-bannerlord-e1-6-3-early-access/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Life-is-Strange-True-Colors-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/life-is-strange-true-colors-v1-1-192-628695-p2p/"
     },
     {
-      "pic": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/08/The-Ascent-download-pc-free.jpg",
       "link": "https://www.skidrowreloaded.com/the-ascent-v07-10-2021-goldberg/"
     }
   ]
@@ -75,8 +75,6 @@ async function lazyScrollSolver(page) {
 
   // Some extra delay to let images load
   await wait(100);
-
-      
 } catch (error) {
     console.log(error);
 }
