@@ -1,3 +1,3 @@
 # Puppeteer Games Scraper
 
-## Finds Latest Posted Games On A Website
+## Finds Latest Games On A Website

@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 app.use(express.static('public'));
 
-const mock={
+const mock = {
   "outer": [
     {
       "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Gas-Station-Simulator-pc-free-download.jpg",
@@ -45,92 +45,94 @@ const mock={
   ]
 }
 
-function wait (ms) {
-  return new Promise(resolve => setTimeout(() => resolve(), ms));
+function wait(ms) {
+  return new Promise(resolve => setTimeout(() => resolve(), ms)).catch(
+    err => console.log(err)
+  );
 }
 
 async function lazyScrollSolver(page) {
   try {
+    // Get the height of the rendered page
+    const bodyHandle = await page.$('body');
+    const { height } = await bodyHandle.boundingBox();
+    await bodyHandle.dispose();
 
-  // Get the height of the rendered page
-  const bodyHandle = await page.$('body');
-  const { height } = await bodyHandle.boundingBox();
-  await bodyHandle.dispose();
+    // Scroll one viewport at a time, pausing to let content load
+    const viewportHeight = page.viewport().height;
+    let viewportIncr = 0;
+    while (viewportIncr + viewportHeight < height) {
+      await page.evaluate(_viewportHeight => {
+        window.scrollBy(0, _viewportHeight);
+      }, viewportHeight);
+      await wait(20);
+      viewportIncr = viewportIncr + viewportHeight;
+    }
 
-  // Scroll one viewport at a time, pausing to let content load
-  const viewportHeight = page.viewport().height;
-  let viewportIncr = 0;
-  while (viewportIncr + viewportHeight < height) {
-    await page.evaluate(_viewportHeight => {
-      window.scrollBy(0, _viewportHeight);
-    }, viewportHeight);
-    await wait(20);
-    viewportIncr = viewportIncr + viewportHeight;
-  }
+    // Scroll back to top
+    await page.evaluate(_ => {
+      window.scrollTo(0, 0);
+    });
 
-  // Scroll back to top
-  await page.evaluate(_ => {
-    window.scrollTo(0, 0);
-  });
+    // Some extra delay to let images load
+    //await wait(100);
 
-  // Some extra delay to let images load
-  await wait(100);
-} catch (error) {
+  } catch (error) {
     console.log(error);
-}
+  }
 }
 
 (async () => {
 
-    //clear
-    await fs.writeFile(
-        `./public/GameList.json`,
-        'outer=',
-        (err) => {
-          if (err) res.send(err)
-        }
-      );
+  await fs.writeFile(
+    `./public/GameList.json`,
+    '',
+    (err) => {
+      if (err) res.send(err)
+    }
+  );
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  
-  let outer=[];
-  for (let index = 1; index <= 2; index++) {
-    await page.goto(`https://www.skidrowreloaded.com/page/${index}`,{waitUntil: 'load'});
+
+  let outer = [];
+  for (let index = 1; index <= 5; index++) {
+    await page.goto(`https://www.skidrowreloaded.com/page/${index}`, { waitUntil: 'load' });
     await lazyScrollSolver(page)
 
-      const evl=await page.evaluate(()=>{
-        let inner=[];
-        document.querySelectorAll('.post-excerpt').forEach(element=>{
-            inner.push({
-              pic:element.childNodes[2].firstChild.firstChild.src,
-              link:element.childNodes[2].firstChild.href
-            }
-          )
-        })
-        return{inner}
-      })
-      
-      outer.push(evl)
-      
-
-      //await console.log(evl);
-      await fs.appendFile(`./public/GameList.json`,JSON.stringify(evl, null, 2),(err) => {
-          if (err) {
-            console.log(err)
-            fs.appendFile(`./public/GameList.json`,JSON.stringify(mock, null, 2))
-          };
+    const evl = await page.evaluate(() => {
+      let inner = [];
+      document.querySelectorAll('.post-excerpt').forEach(element => {
+        inner.push({
+          pic: element.childNodes[2].firstChild.firstChild.src,
+          link: element.childNodes[2].firstChild.href
         }
-      );
+        )
+      })
+
+
+      return { inner }
+    })
+    console.log("Page" + index + " Fetched")
+    outer.push(evl.inner)
   }
 
-  await console.log(outer);
+  //await console.log(outer);
+  await fs.appendFile(`./public/GameList.json`, JSON.stringify(outer, null, 2), (err) => {
+    console.log("Operation Completed")
+    if (err) {
+      console.log(err)
+      fs.appendFile(`./public/GameList.json`, JSON.stringify(mock, null, 2))
+    };
+  }
+  );
+
   debugger;
   await browser.close();
 })();
 
 
-  //https://expressjs.com/en/starter/examples.html reference
+//https://expressjs.com/en/starter/examples.html reference
 
-  app.listen(5000,()=>console.log("Listening on port 5000"))
+app.listen(5000, () => console.log("Listening on port 5000"))

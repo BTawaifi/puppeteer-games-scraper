@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card {
+  margin: 5px;
+}
+
+main {
+  width: 100%;
+}
+
+.btn-refresh {
+  width: 20%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1rem;
+
+  color: white;
+  background-color: black;
+  font-size: large;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}

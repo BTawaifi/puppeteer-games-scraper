@@ -1,5 +1,5 @@
-outer={
-  "inner": [
+[
+  [
     {
       "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Gas-Station-Simulator-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/gas-station-simulator-v1-01-38259-goldberg/"
@@ -36,9 +36,8 @@ outer={
       "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/08/The-Ascent-download-pc-free.jpg",
       "link": "https://www.skidrowreloaded.com/the-ascent-v07-10-2021-goldberg/"
     }
-  ]
-}{
-  "inner": [
+  ],
+  [
     {
       "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Succubus-With-Guns-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/succubus-with-guns-darksiders/"
@@ -75,5 +74,119 @@ outer={
       "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Schizm-Mysterious-Journey-pc-free-download.jpg",
       "link": "https://www.skidrowreloaded.com/schizm-mysterious-journey-multi8-plaza/"
     }
+  ],
+  [
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Flappy-Shooter-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/flappy-shooter-doge/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Pathfinder-Wrath-of-the-Righteous-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/pathfinder-wrath-of-the-righteous-v1-0-8d-gog/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/04/Borderlands-3-Directors-Cut-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/borderlands-3-directors-cut-v20210909-p2p/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Age-of-Darkness-Final-Stand-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/age-of-darkness-final-stand-early-access/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Blade-of-Darkness-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/blade-of-darkness-doge/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Whisper-Trip-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/whisper-trip-chapter-1-doge/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Order-of-Battle-Allies-Resurgent-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/order-of-battle-world-war-ii-allies-resurgent-plaza/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/The-Lightbringer-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/the-lightbringer-doge/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Imperiums-Age-of-Alexander-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/imperiums-greek-wars-age-of-alexander-codex/"
+    }
+  ],
+  [
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Lightout-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/lightout-doge/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/The-Last-Campfire-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/the-last-campfire-flt/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Far-Cry-6-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/far-cry-6-ultimate-edition-full-unlocked/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Kena-Bridge-of-Spirits-pc-download-free-crack.jpg",
+      "link": "https://www.skidrowreloaded.com/kena-bridge-of-spirits-v1-09-p2p/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/09/Diablo-II-Resurrected-pc-download-crack.jpg",
+      "link": "https://www.skidrowreloaded.com/diablo-ii-resurrected-v1-0-66063-zloe/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/04/Total-War-ROME-REMASTERED-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/total-war-rome-remastered-v2-0-3-p2p/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Jett-the-Far-Shore-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/jett-the-far-shore-p2p/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/07/Haunt-Chaser-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/haunt-chaser-plaza/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/The-Long-Dark-Wintermute-Episode-4-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/the-long-dark-wintermute-episode-4-plaza/"
+    }
+  ],
+  [
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2020/09/Northgard-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/northgard-krowns-and-daggers-plaza/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Extinction-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/extinction-darksiders/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/The-Rebellion-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/the-rebellion-early-access/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2020/04/Stormworks-Build-and-Rescue-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/stormworks-search-and-destroy-goldberg/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2018/12/Killing-Floor-2.jpg",
+      "link": "https://www.skidrowreloaded.com/killing-floor-2-day-of-the-zed-codex/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Succubus-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/succubus-flt/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2020/07/Vagrus-The-Riven-Realms-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/vagrus-the-riven-realms-codex/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Wasteland-3-Cult-of-the-Holy-Detonation-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/wasteland-3-cult-of-the-holy-detonation-codex/"
+    },
+    {
+      "pic": "https://www.skidrowreloaded.com/wp-content/uploads/2021/10/Hotel-Magnate-pc-free-download.jpg",
+      "link": "https://www.skidrowreloaded.com/hotel-magnate-early-access/"
+    }
   ]
-}
+]
