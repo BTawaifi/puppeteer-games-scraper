@@ -95,23 +95,27 @@ async function lazyScrollSolver(page) {
   const page = await browser.newPage();
 
   
-  for (let index = 1; index <= 1; index++) {
+  let outer=[];
+  for (let index = 1; index <= 2; index++) {
     await page.goto(`https://www.skidrowreloaded.com/page/${index}`,{waitUntil: 'load'});
     await lazyScrollSolver(page)
- 
+
       const evl=await page.evaluate(()=>{
-        let outer=[];
+        let inner=[];
         document.querySelectorAll('.post-excerpt').forEach(element=>{
-            outer.push({
+            inner.push({
               pic:element.childNodes[2].firstChild.firstChild.src,
               link:element.childNodes[2].firstChild.href
             }
           )
         })
-        return{outer}
+        return{inner}
       })
       
-      await console.log(evl);
+      outer.push(evl)
+      
+
+      //await console.log(evl);
       await fs.appendFile(`./public/GameList.json`,JSON.stringify(evl, null, 2),(err) => {
           if (err) {
             console.log(err)
@@ -121,6 +125,7 @@ async function lazyScrollSolver(page) {
       );
   }
 
+  await console.log(outer);
   debugger;
   await browser.close();
 })();
