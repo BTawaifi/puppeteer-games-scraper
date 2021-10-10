@@ -1,24 +1,18 @@
 const btnRefresh = document.querySelector('.btn-refresh');
+const inputRefresh = document.getElementById('input-refresh')
 btnRefresh.addEventListener('click', RefreshHandler);
-
-function RefreshHandlerT() {
-    fetch('./GameList.json')
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error));
-}
 
 //placeholder
 function RefreshHandler() {
     document.querySelector('.container').innerHTML = "";
-    fetch('./GameList.json')
+    document.querySelector('.status').innerHTML = `Server Fetching 
+    <div class="status-sub">Please Wait</div>`;
+    if (inputRefresh.value==""||inputRefresh.value==undefined) {
+        inputRefresh.value=1
+    }
+    fetch(`http://localhost:5000/fetch:${inputRefresh.value}`,{method:'GET'})
         .then(response => response.json())
         .then(data => {
-            if (data == "") {
-                document.querySelector('.container').innerHTML = "Server Still Fetching";
-            }
-
-            else
                 data.forEach((mainArr) => {
                     mainArr.forEach(function (E) {
                         const link = document.createElement('a');
@@ -29,15 +23,15 @@ function RefreshHandler() {
                         div.setAttribute('class', "card");
                         div.appendChild(link);
                         link.appendChild(pic);
+                        document.querySelector('.status').innerHTML = "";
                         document.querySelector('.container').appendChild(div);
                     }
                     )
                 });
         })
         .catch(error => {
-            document.querySelector('.container').innerHTML = "Server Still Fetching";
+            document.querySelector('.status').innerHTML = "ERROR";
             console.log(error)
-
         });
 
 }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .container {
   display: flex;
   justify-content: center;
@@ -5,22 +6,66 @@
   flex-wrap: wrap;
 }
 
-h1 {
+h1 {font-family: "Poppins",Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
+  margin-bottom: 3rem;
+}
+
+.status {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  from {color: black;}
+  to {color: red;}
+}
+
+.status>* {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  animation-name: blinkOpa;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blinkOpa {
+  from {opacity: 0;}
+  to {opacity: 100;}
 }
 
 .card {
   margin: 5px;
+
 }
+
+.card >a>img{
+  filter: opacity(90%);
+}
+
+.card >a>img:hover{
+  filter: opacity(100%);
+}
+
 
 main {
   width: 100%;
 }
 
+.refresh{
+  display: flex;
+  justify-content: center;
+}
+
 .btn-refresh {
   width: 20%;
-  margin-left: 50%;
-  transform: translateX(-50%);
   margin-bottom: 1rem;
 
   color: white;
@@ -29,6 +74,17 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#input-refresh {
+  padding: 1px 1px;
+  height: fit-content;
+  margin-left: 5px;
+}
+
+.btn-refresh:hover {
+  color: black;
+  background-color: white;
 }
 
 img {
