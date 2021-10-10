@@ -21,11 +21,9 @@ function RefreshHandler() {
               ${E.link}
          `
          ;
-         div.innerHTML=`
-            ${link}
-         `
          //${E.children[1].children[0].innerText}:${releaseHolder.replace("Released: ", "")}
          div.appendChild(pic);
+         div.appendChild(link);
         document.querySelector('.Container').appendChild(div);
     });
 }
