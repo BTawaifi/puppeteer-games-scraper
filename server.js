@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const path = require("path");
 const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
@@ -7,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({origin: "*"}));
 app.use(compression())
 
@@ -97,4 +98,4 @@ app.get("/fetch::num", async (req, res) =>  {
   res.send(outer)
 });
 
-app.listen(PORT, () => console.log("Listening on port "+PORT));
+app.listen(PORT, () => console.log("Listening on port 5000"));

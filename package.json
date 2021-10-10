@@ -2,16 +2,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "nodemon": "^2.0.13",
     "puppeteer": "^10.4.0"
   },
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "name": "puppeteer-games-scraper",
   "description": "An Application That Allows Web Scraping Games Using A Headless Browser",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BTawaifi/puppeteer-games-scraper.git"
