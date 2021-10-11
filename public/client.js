@@ -5,8 +5,7 @@ btnRefresh.addEventListener('click', RefreshHandler);
 //placeholder
 function RefreshHandler() {
     document.querySelector('.container').innerHTML = "";
-    document.querySelector('.status').innerHTML = `Server Fetching 
-    <div class="status-sub">Please Wait</div>`;
+    document.querySelector('.status').innerHTML = `Please Wait <span class="status-sub">...</span>`;
     if (inputRefresh.value==""||inputRefresh.value==undefined) {
         inputRefresh.value=1
     }

@@ -12,24 +12,25 @@
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
-  "name": "puppeteer-games-scraper",
-  "description": "An Application That Allows Web Scraping Games Using A Headless Browser",
-  "version": "1.0.0",
+  "name": "puppeteer-general-scraper",
+  "description": "Customizable application for webscraping using puppeteer",
+  "version": "1.1.0",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BTawaifi/puppeteer-games-scraper.git"
+    "url": "git+https://github.com/BTawaifi/puppeteer-general-scraper.git"
   },
   "keywords": [
     "puppeteer",
-    "games",
-    "scraper",
+    "puppeteer-general-scraper",
+    "puppeteer scraper",
+    "puppeteer web scraping",
     "games",
     "scraper"
   ],
   "author": "Boutros Tawaifi",
   "bugs": {
-    "url": "https://github.com/BTawaifi/puppeteer-games-scraper/issues"
+    "url": "https://github.com/BTawaifi/puppeteer-general-scraper/issues"
   },
-  "homepage": "https://github.com/BTawaifi/puppeteer-games-scraper#readme"
+  "homepage": "https://github.com/BTawaifi/puppeteer-general-scraper#readme"
 }

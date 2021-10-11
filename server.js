@@ -7,9 +7,11 @@ const compression = require("compression");
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({ origin: "*" }));
 app.use(compression());
+
+//Serves the client static files
+app.use(express.static(path.join(__dirname, "public")));
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(), ms)).catch(
@@ -17,6 +19,7 @@ function wait(ms) {
   );
 }
 
+//Handles pages that contain lazy loaded elements
 async function lazyScrollSolver(page) {
   try {
     // Get the height of the rendered page
@@ -40,13 +43,13 @@ async function lazyScrollSolver(page) {
     }
 
     // Scroll back to top
-    await page
+    /*await page
       .evaluate((_) => {
         window.scrollTo(0, 0);
       })
       .catch((err) => {
         console.log(err);
-      });
+      });*/
 
     // Some extra delay to let images load
     // await wait(100);
@@ -55,48 +58,58 @@ async function lazyScrollSolver(page) {
   }
 }
 
-async function fetchpage(outerArray, page, link, req) {
-  for (let index = 1; index <= req.params.num; index++) {
+//This Function is meant to be changed!
+//Currently it fetches links and pictures from a website and combines them into an array of objects
+async function fetchpage(page, link, params) {
+  let outerArray = [];
+  //params.num lets the uses pick how many pages to fetch
+  for (let index = 1; index <= params.num; index++) {
     try {
+      //changes the page url
       await page.goto(`${link}${index}`, { waitUntil: "load" });
       await lazyScrollSolver(page);
+      //DOM manipulation
       const evl = await page.evaluate(() => {
         let inner = [];
+        //customize DOM manipulation here
         document.querySelectorAll(".post-excerpt").forEach((element) => {
           inner.push({
             pic: element.childNodes[2].firstChild.firstChild.src,
             link: element.childNodes[2].firstChild.href,
           });
         });
-
+        ////////////////////////////////
         return { inner };
       });
+
       await console.log("Page" + index + " Fetched");
-      outerArray.push(evl.inner);
+      await outerArray.push(evl.inner);
+      return {outerArray}
     } catch (error) {
       console.log(error);
+      return 500;
     }
   }
 }
 
 app.get("/fetch::num", async (req, res) => {
   console.log("Starting Fetch");
-  const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  //Create new headless browser
+  const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"]});
   try {
+    //Create new page and fetch contents via function
     const page = await browser.newPage();
-    let outer = [];
-    await fetchpage( outer, page, "https://www.skidrowreloaded.com/page/", req );
-    res.send(outer);
+    let outer = await fetchpage( page, "https://www.skidrowreloaded.com/page/", req.params );
+    res.send(outer.outerArray);
+
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   } finally {
-    browser.close()
-      .then(() => {
+    //Always close the browser
+    browser.close().then(() => {
         console.log("Fetch Completed");
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log(err);
       });
   }
