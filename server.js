@@ -3,13 +3,12 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
-//const fs = require("fs");
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors({ origin: "*" })); //Not needed
+app.use(cors({ origin: "*" }));
 app.use(compression());
 
 function wait(ms) {
@@ -17,16 +16,6 @@ function wait(ms) {
     (err) => console.log(err)
   );
 }
-
-/* 
-async function writeFile(file, buffer) {
-  await fs.writeFile(file, JSON.stringify(buffer, null, 2), (err) => {
-    console.log("Operation Completed");
-    if (err) {
-      console.log(err);
-    }
-  });
-} */
 
 async function lazyScrollSolver(page) {
   try {
@@ -66,18 +55,12 @@ async function lazyScrollSolver(page) {
   }
 }
 
-async function fetchpage(outerArray, page, link, req,res) {
+async function fetchpage(outerArray, page, link, req) {
   for (let index = 1; index <= req.params.num; index++) {
-    await page
-      .goto(`${link}${index}`, {
-        waitUntil: "load",
-      })
-      .catch((err) => {
-        res.sendStatus(404, err.message);
-      });
-    await lazyScrollSolver(page);
-    const evl = await page
-      .evaluate(() => {
+    try {
+      await page.goto(`${link}${index}`, { waitUntil: "load" });
+      await lazyScrollSolver(page);
+      const evl = await page.evaluate(() => {
         let inner = [];
         document.querySelectorAll(".post-excerpt").forEach((element) => {
           inner.push({
@@ -87,30 +70,27 @@ async function fetchpage(outerArray, page, link, req,res) {
         });
 
         return { inner };
-      })
-      .catch((err) => {
-        console.log(err);
       });
-    await console.log("Page" + index + " Fetched");
-    outerArray.push(evl.inner);
+      await console.log("Page" + index + " Fetched");
+      outerArray.push(evl.inner);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
-
 
 app.get("/fetch::num", async (req, res) => {
   console.log("Starting Fetch");
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  }); //Consider changing this if it fails on local
-
+  });
   try {
     const page = await browser.newPage();
     let outer = [];
-    fetchpage(outer,page,"https://www.skidrowreloaded.com/page/",req).then(res.send(outer))
-    .catch((err) => {console.log(err);});
-    
-  } catch (e) {
-    console.log(e);
+    await fetchpage( outer, page, "https://www.skidrowreloaded.com/page/", req );
+    res.send(outer);
+  } catch (error) {
+    console.log(error);
   } finally {
     browser.close()
       .then(() => {
@@ -122,9 +102,11 @@ app.get("/fetch::num", async (req, res) => {
   }
 });
 
-app.get("/404",(req,res)=>{
-  console.log("NOT FOUND")
+app.use(function (req, res, next) {
+  //res.status(404).send("Sorry can't find that!")
+  res.redirect('/');
 })
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
