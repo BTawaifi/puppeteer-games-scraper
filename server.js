@@ -63,8 +63,8 @@ async function lazyScrollSolver(page) {
 async function fetchpage(page, link, params) {
   let outerArray = [];
   //params.num lets the uses pick how many pages to fetch
+  try {
   for (let index = 1; index <= params.num; index++) {
-    try {
       //changes the page url
       await page.goto(`${link}${index}`, { waitUntil: "load" });
       await lazyScrollSolver(page);
@@ -84,12 +84,12 @@ async function fetchpage(page, link, params) {
 
       await console.log("Page" + index + " Fetched");
       await outerArray.push(evl.inner);
-      return {outerArray}
-    } catch (error) {
-      console.log(error);
-      return 500;
     }
+  } catch (error) {
+    console.log(error);
+    return 500;
   }
+  return {outerArray}
 }
 
 app.get("/fetch::num", async (req, res) => {
