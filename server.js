@@ -19,6 +19,29 @@ function wait(ms) {
   );
 }
 
+app.get("/fetch::num", async (req, res) => {
+  console.log("Starting Fetch");
+  //Create new headless browser
+  const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"]});
+  try {
+    //Create new page and fetch contents via function
+    const page = await browser.newPage();
+    let outer = await fetchpage( page, "https://www.skidrowreloaded.com/page/", req.params );
+    res.send(outer.outerArray);
+
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  } finally {
+    //Always close the browser
+    browser.close().then(() => {
+        console.log("Fetch Completed");
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+});
+
 //Handles pages that contain lazy loaded elements
 async function lazyScrollSolver(page) {
   try {
@@ -92,29 +115,8 @@ async function fetchpage(page, link, params) {
   return {outerArray}
 }
 
-app.get("/fetch::num", async (req, res) => {
-  console.log("Starting Fetch");
-  //Create new headless browser
-  const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"]});
-  try {
-    //Create new page and fetch contents via function
-    const page = await browser.newPage();
-    let outer = await fetchpage( page, "https://www.skidrowreloaded.com/page/", req.params );
-    res.send(outer.outerArray);
 
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  } finally {
-    //Always close the browser
-    browser.close().then(() => {
-        console.log("Fetch Completed");
-      }).catch((err) => {
-        console.log(err);
-      });
-  }
-});
-
+//handles 404
 app.use(function (req, res, next) {
   //res.status(404).send("Sorry can't find that!")
   res.redirect('/');

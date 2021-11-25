@@ -1,9 +1,14 @@
 # Puppeteer General Scraper
 
-> Customizable application for webscraping using puppeteer
+> Customizable REST API for webscraping using puppeteer
 
+Checkout The Project At:
+```bash 
+https://puppeteer-general-scraper.herokuapp.com
+```
 ## Features
 
+- Allows communication via a RESI API
 - Uses Node and Express for Backend
 - Uses puppeteer for webscraping by opening a headless browser
 - Serves static client pages
